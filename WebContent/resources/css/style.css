@@ -1,0 +1,41 @@
+.image { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+h3 { 
+   position: absolute; 
+   top: 100px; 
+   left: 0; 
+   width: 100%; 
+   color: black;
+   text-align: center;
+   font-weight:bold;
+}
+
+#jumbo1 {
+    background-color: white;
+    height: 200px;
+}
+
+#jumbo2 {
+    background-color: blue;
+    height: 671px;
+}
+.text-center{
+	color: white;
+	font-size: 150%;
+	
+}
+#please1 {
+	position: absolute; 
+   top: 140px; 
+   left: 0; 
+   width: 100%; 
+   color: black;
+   text-align: center;
+   font-weight:bold;
+}
+.modal-header{
+	background-color:orange;
+}

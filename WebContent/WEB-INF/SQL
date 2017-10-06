@@ -1,0 +1,96 @@
+
+Database: `shopping_cart`
+
+CREATE TABLE IF NOT EXISTS `BILLING` (
+  `BILLING_ID` int(100) NOT NULL auto_increment,
+  `TOTAL_BILL` int(11) default NULL,
+  `USER_ID` int(100) default NULL,
+  `CART_ID` int(100) default NULL,
+  PRIMARY KEY  (`BILLING_ID`),
+  KEY `FK_USER` (`USER_ID`),
+  KEY `FK_CART` (`CART_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `CART` (
+  `CART_ID` int(100) NOT NULL auto_increment,
+  `QTY` int(11) default NULL,
+  `USER_ID` int(100) default NULL,
+  `PRODUCT_ID` int(100) default NULL,
+  PRIMARY KEY  (`CART_ID`),
+  KEY `FK_USER` (`USER_ID`),
+  KEY `FK_PRODUCT` (`PRODUCT_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+CREATE TABLE IF NOT EXISTS `ORDERS` (
+  `ORDER_ID` int(100) NOT NULL auto_increment,
+  `QTY` int(11) default NULL,
+  `USER_ID` int(100) default NULL,
+  `PRODUCT_ID` int(100) default NULL,
+  PRIMARY KEY  (`ORDER_ID`),
+  KEY `FK_USER` (`USER_ID`),
+  KEY `FK_PRODUCT` (`PRODUCT_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `PRODUCT` (
+  `PRODUCT_ID` int(100) NOT NULL auto_increment,
+  `PRODUCT_NAME` varchar(100) NOT NULL,
+  `PRODUCT_PRICE` varchar(50) NOT NULL,
+  `QTY_IN_HND` int(11) default NULL,
+  PRIMARY KEY  (`PRODUCT_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+
+INSERT INTO `PRODUCT` (`PRODUCT_ID`, `PRODUCT_NAME`, `PRODUCT_PRICE`, `QTY_IN_HND`) VALUES
+(1, 'Ball', '50', 1),
+(2, 'Cycle', '300', 3),
+(3, 'Milk', '23', 2),
+(4, 'Food', '33', 3),
+(5, 'Car', '3456', 3),
+(6, 'Bike', '3456', 4);
+
+
+CREATE TABLE IF NOT EXISTS `USER` (
+  `USER_ID` int(100) NOT NULL auto_increment,
+  `USER_NAME` varchar(50) NOT NULL,
+  `PASSWORD` varchar(50) NOT NULL,
+  `USER_ADDRESS` varchar(1000) default NULL,
+  PRIMARY KEY  (`USER_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+------------------------------------------------------------------------------------------------------------------
+
+ create table USER(
+    -> USER_ID int(100) not null auto_increment,
+    -> USER_NAME varchar(50) not null,
+    -> PASSWORD varchar(50) not null,
+    -> USER_ADDRESS varchar(1000) default null,
+    -> PRIMARY KEY (USER_ID)
+    -> );
+
+create table PRODUCT(
+    -> PRODUCT_ID int(100) not null auto_increment,
+    -> PRODUCT_NAME varchar(100) not null,
+    -> PRODUCT_PRICE varchar(50) not null,
+    -> QTY_IN_HND int(11) default null,
+    -> primary key (PRODUCT_ID)
+    -> );
+
+create table CART(
+    -> CART_ID int(100) not null auto_increment,
+    -> USER_ID int(100) default null,
+    -> PRODUCT_ID int(100) default null,
+    -> QTY int(11) default null,
+    -> primary key (CART_ID),
+    -> foreign key (USER_ID) references USER(USER_ID),
+    -> foreign key (PRODUCT_ID) references PRODUCT(PRODUCT_ID)
+    -> );
+
+INSERT INTO PRODUCT (`PRODUCT_ID`, `PRODUCT_NAME`, `PRODUCT_PRICE`, `QTY_IN_HND`) VALUES
+    -> (1, 'Ball', '50', 1),
+    -> (2, 'Cycle', '300', 3),
+    -> (3, 'Milk', '23', 2),
+    -> (4, 'Food', '33', 3),
+    -> (5, 'Car', '3456', 3),
+    -> (6, 'Bike', '3456', 4);
+
+    
